@@ -6,6 +6,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import { Product } from './pages/Product.jsx'
 import { Cart } from './pages/Cart.jsx'
 import { Success } from './pages/Success.jsx'
+import { ProductContextProvider } from './context/ProductContext.jsx'
 const router=createBrowserRouter([
   {
     path:'/',
@@ -29,6 +30,8 @@ const router=createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ProductContextProvider>
+      <RouterProvider router={router} />
+    </ProductContextProvider>
   </StrictMode>,
 )
