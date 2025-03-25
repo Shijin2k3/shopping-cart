@@ -1,11 +1,17 @@
 
 
 import './App.css'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
+import { useContext, useEffect } from 'react';
+import { ProductContext } from './context/ProductContext';
 
 function App() {
-
+  const {filterProducts}=useContext(ProductContext)
+  const {category}=useParams();
+  useEffect(()=>{
+    filterProducts(category)
+  },[category])
 
   return (
    
