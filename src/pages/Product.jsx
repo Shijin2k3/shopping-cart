@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { ProductContext } from '../context/ProductContext'
 
 export const Product = () => {
-  const {products}=useContext(ProductContext)
+  const {products,addCart }=useContext(ProductContext)
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5  gap-6 py-5 ' >
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-6 py-5 ' >
       {
         products.map(product =>{
           return(
@@ -19,7 +19,7 @@ export const Product = () => {
                   <p className='text-center text-sm'>$ {product.price}</p>
                   <p className='text-xs text-gray-500 text-center'> {product.smallDescription}</p>
                 </div>
-                <button className='w-full bg-blue-700 text-white text-center text-xs p-2 rounder-lg'>+ Add to Cart</button>
+                <button className='w-full bg-blue-700 text-white text-center text-xs p-2 rounder-lg' onClick={()=>addCart(product)}>+ Add to Cart</button>
             </div>
           )
         })

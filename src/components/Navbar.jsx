@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {FaYoutube} from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 import { products_categories } from '../data/products'
+import { ProductContext } from '../context/ProductContext'
 
 export const Navbar = () => {
+  const {invoice}=useContext(ProductContext)
   const isActive = (element) =>{
     return element?.isActive ? 'text-blue-600':''
   }
@@ -23,9 +25,16 @@ export const Navbar = () => {
         })}
         
       </ul>
-      <div className=' flex items-center'>
+
+      <div className='  relative mt-5'>
         <FaShoppingCart className='text-2xl cursor-pointer'/>
-      </div>
+
+        {invoice?.count > 0 &&
+          <div className='absolute -top-2 -right-2 w-4 text-xs bg-blue-700 text-white flex items-center justify-center rounded-full'>
+            {invoice?.count}</div>
+        }      
+     </div>
+      
     </div>
   )
 }
