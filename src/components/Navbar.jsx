@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {FaYoutube} from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 import { products_categories } from '../data/products'
 import { ProductContext } from '../context/ProductContext'
@@ -26,14 +26,14 @@ export const Navbar = () => {
         
       </ul>
 
-      <div className='  relative mt-5'>
+      <Link className='  relative mt-5' to={'/cart'}>
         <FaShoppingCart className='text-2xl cursor-pointer'/>
 
         {invoice?.count > 0 &&
           <div className='absolute -top-2 -right-2 w-4 text-xs bg-blue-700 text-white flex items-center justify-center rounded-full'>
             {invoice?.count}</div>
         }      
-     </div>
+     </Link>
       
     </div>
   )

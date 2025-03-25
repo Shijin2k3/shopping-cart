@@ -15,7 +15,7 @@ function App() {
 
   return (
    
-      <div className='h-auto bg-slate-200'>
+      <div className='min-h-screen h-auto bg-slate-200'>
         <Navbar />
         <div className='w-[80%] m-auto my-4 bg-white'>
            <Outlet />

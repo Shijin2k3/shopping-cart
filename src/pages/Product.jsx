@@ -19,7 +19,7 @@ export const Product = () => {
                   <p className='text-center text-sm'>$ {product.price}</p>
                   <p className='text-xs text-gray-500 text-center'> {product.smallDescription}</p>
                 </div>
-                <button className='w-full bg-blue-700 text-white text-center text-xs p-2 rounder-lg' onClick={()=>addCart(product)}>+ Add to Cart</button>
+                <button className='w-full bg-blue-700 text-white text-center text-xs p-2 rounder-lg cursor-pointer' onClick={()=>addCart(product)}>+ Add to Cart</button>
             </div>
           )
         })
