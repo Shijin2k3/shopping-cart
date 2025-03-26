@@ -30,6 +30,19 @@ export const ProductContextProvider=({children})=>{
             return previous;
         })
     }
+    //remove cart
+    const removeCart=(product)=>{
+        setCart(oldCart =>{
+            let previous =[...oldCart]
+            const isProduct=previous.find(prod=>prod.id == product.id)
+            if(isProduct){
+                const index=previous.indexOf(isProduct)
+                previous.splice(index,1)
+            }
+            
+            return previous
+        })
+    }
     // filtering category
     const filterProducts=(category)=>{
         if(category){
@@ -60,7 +73,7 @@ export const ProductContextProvider=({children})=>{
     },[cart])
 
     return(
-        <ProductContext.Provider value={{products,filterProducts,addCart,invoice,cart}}>
+        <ProductContext.Provider value={{products,filterProducts,addCart,removeCart,invoice,cart}}>
             {children}
         </ProductContext.Provider>
     )
