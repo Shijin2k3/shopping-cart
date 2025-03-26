@@ -1,11 +1,17 @@
 import React, { useContext } from 'react'
 import { ProductContext } from '../context/ProductContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 import { IoIosRemoveCircleOutline } from 'react-icons/io'
 
 export const Cart = () => {
-  const {cart,invoice,removeCart} = useContext(ProductContext)
+  const {cart,invoice,removeCart,setCart,setInvoice} = useContext(ProductContext);
+  const navigate=useNavigate();
+  const placeOrder=()=>{
+    setCart([]);//making cart empty while placing order
+    setInvoice({count:0,subTotal:0}) //making quantity and total 0
+    navigate('/success')
+  }
   return (
     <div className=''>
       {
@@ -32,8 +38,8 @@ export const Cart = () => {
             })
           }
           <div className='flex flex-col items-end gap-3 py-4'>
-            <p className='font-bold'>Subtotal ({invoice.count} {invoice.count > 1 ?'items':'item' } ) : ${invoice.subTotal}</p>
-            <button className='bg-blue-600 text-xs text-white p-2 w-[200px] rounded-md'>Place Order</button>
+            <p className='font-bold'>Subtotal ({invoice.count} {invoice.count > 1 ?'items':'item' } ) : ${invoice.subTotal.toFixed(2)}</p>
+            <button className='bg-blue-600 text-sm text-white p-2 w-[200px] rounded-md cursor-pointer' onClick={placeOrder}>Place Order</button>
           </div>
         </div>
         :
